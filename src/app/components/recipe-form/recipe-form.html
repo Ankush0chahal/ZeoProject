@@ -1,0 +1,73 @@
+<div class="container">
+  <h2>{{ isEditMode ? 'Edit' : 'Add' }} Recipe</h2>
+  <form [formGroup]="recipeForm" (ngSubmit)="onSubmit()">
+    
+    <!-- Title -->
+    <div class="mb-3">
+      <label for="title" class="form-label">Title</label>
+      <input type="text" id="title" class="form-control" formControlName="title" [ngClass]="{ 'is-invalid': f['title'].invalid && f['title'].touched }">
+      <div *ngIf="f['title'].invalid && f['title'].touched" class="invalid-feedback">
+        <div *ngIf="f['title'].errors?.['required']">Title is required.</div>
+        <div *ngIf="f['title'].errors?.['maxlength']">Title cannot be more than 100 characters.</div>
+      </div>
+    </div>
+
+    <!-- Image URL -->
+    <div class="mb-3">
+      <label for="image" class="form-label">Image URL</label>
+      <input type="text" id="image" class="form-control" formControlName="imageUrl" [ngClass]="{ 'is-invalid': f['imageUrl'].invalid && f['imageUrl'].touched }">
+      <div *ngIf="f['imageUrl'].invalid && f['imageUrl'].touched" class="invalid-feedback">
+        <div *ngIf="f['imageUrl'].errors?.['pattern']">Please enter a valid image URL.</div>
+      </div>
+    </div>
+
+    <!-- Summary -->
+    <div class="mb-3">
+      <label for="summary" class="form-label">Summary</label>
+      <textarea id="summary" class="form-control" formControlName="summary" [ngClass]="{ 'is-invalid': f['summary'].invalid && f['summary'].touched }"></textarea>
+      <div *ngIf="f['summary'].invalid && f['summary'].touched" class="invalid-feedback">
+        <div *ngIf="f['summary'].errors?.['maxlength']">Summary cannot be more than 500 characters.</div>
+      </div>
+    </div>
+
+    <!-- Category -->
+    <div class="mb-3">
+      <label for="category" class="form-label">Category</label>
+      <input type="text" id="category" class="form-control" formControlName="category" [ngClass]="{ 'is-invalid': f['category'].invalid && f['category'].touched }">
+       <div *ngIf="f['category'].invalid && f['category'].touched" class="invalid-feedback">
+        <div *ngIf="f['category'].errors?.['required']">Category is required.</div>
+      </div>
+    </div>
+
+    <!-- Cuisine -->
+    <div class="mb-3">
+      <label for="cuisine" class="form-label">Cuisine</label>
+      <input type="text" id="cuisine" class="form-control" formControlName="cuisine" [ngClass]="{ 'is-invalid': f['cuisine'].invalid && f['cuisine'].touched }">
+       <div *ngIf="f['cuisine'].invalid && f['cuisine'].touched" class="invalid-feedback">
+        <div *ngIf="f['cuisine'].errors?.['required']">Cuisine is required.</div>
+      </div>
+    </div>
+
+    <!-- Ingredients -->
+    <div class="mb-3">
+      <label for="ingredients" class="form-label">Ingredients (comma separated)</label>
+      <textarea id="ingredients" class="form-control" formControlName="ingredients" [ngClass]="{ 'is-invalid': f['ingredients'].invalid && f['ingredients'].touched }"></textarea>
+       <div *ngIf="f['ingredients'].invalid && f['ingredients'].touched" class="invalid-feedback">
+        <div *ngIf="f['ingredients'].errors?.['required']">Ingredients are required.</div>
+      </div>
+    </div>
+
+    <!-- Instructions -->
+    <div class="mb-3">
+      <label for="instructions" class="form-label">Instructions</label>
+      <textarea id="instructions" class="form-control" formControlName="instructions" [ngClass]="{ 'is-invalid': f['instructions'].invalid && f['instructions'].touched }"></textarea>
+       <div *ngIf="f['instructions'].invalid && f['instructions'].touched" class="invalid-feedback">
+        <div *ngIf="f['instructions'].errors?.['required']">Instructions are required.</div>
+      </div>
+    </div>
+
+    <button type="submit" class="btn btn-success" [disabled]="recipeForm.invalid">
+      {{ isEditMode ? 'Update' : 'Create' }} Recipe
+    </button>
+  </form>
+</div>

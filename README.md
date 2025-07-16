@@ -1,59 +1,39 @@
-# Frontend
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.1.0.
 
-## Development server
+Angular Recipe Book
+This is a single-page application built with Angular that allows users to discover, create, and manage their favorite recipes. It also includes features for managing a shopping list. The application is connected to a Firebase backend for user authentication and data persistence, allowing users to save and fetch recipes.
+Features
+User Authentication: Sign up, log in, and log out functionality.
+Recipe Management: Create, read, update, and delete recipes.
+Shopping List: Add ingredients from recipes to a shopping list and manage the list.
+Data Persistence: Save and fetch recipes from a Firebase backend.
+Responsive Design: A clean and modern UI built with Bootstrap.
+Technology Choices
+Angular: A powerful and modern web framework for building single-page applications.
+TypeScript: A statically typed superset of JavaScript that enhances code quality and maintainability.
+Firebase: Provides backend services, including:
+Firebase Authentication: For handling user sign-up and login.
+Firestore: As a NoSQL database for storing recipe and shopping list data.
+Bootstrap: A popular CSS framework for creating responsive and mobile-first layouts.
+Reactive Forms: For building and validating forms in a scalable manner.
+Setup Instructions
+cd Angular-Recipe-App
+npm install
+ng 
 
-To start a local development server, run:
 
-```bash
-ng serve
-```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+Dependencies
+node js , angular cli
+Angular: The core framework for building the application.
+TypeScript: The primary language used for developing the application.
+Bootstrap 5: For styling and creating a responsive layout.
+RxJS: For reactive programming using observables.
+Firebase: Used for backend services like authentication and database storage.
 
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
-```
-
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+API Endpoints
+This application uses Firebase for its backend, which does not have traditional REST API endpoints. Instead, it communicates with Firebase services directly using the Firebase SDK. The main interactions are:
+Authentication: Uses Firebase Authentication for user management.
+Database: Uses Firestore to store and retrieve data in the following collections:
+/recipes: Stores all the recipe documents.
+/shopping-list: Stores the ingredients for the user's shopping list.

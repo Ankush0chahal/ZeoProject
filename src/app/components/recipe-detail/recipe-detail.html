@@ -1,0 +1,28 @@
+<!-- src/app/recipe-detail/recipe-detail.html -->
+
+<div *ngIf="recipe; else notFound" class="detail-container">
+  <h2>{{ recipe.title }}</h2>
+  <img *ngIf="recipe.imageUrl" [src]="recipe.imageUrl" alt="{{ recipe.title }}" class="recipe-detail-image" />
+
+  <div class="actions">
+    <a [routerLink]="['/recipes/edit', recipe.id]" class="btn btn-primary">Edit</a>
+    <button (click)="deleteRecipe()" class="btn btn-danger">Delete</button>
+  </div>
+
+  <div class="section">
+    <h3>Instructions</h3>
+    <ol>
+      <li *ngFor="let step of instructionsSteps">{{ step }}</li>
+    </ol>
+  </div>
+
+  <div class="section">
+    <h3>Ingredients</h3>
+    <ul>
+      <li *ngFor="let ingredient of recipe.ingredients">{{ ingredient }}</li>
+    </ul>
+  </div>
+</div>
+<ng-template #notFound>
+  <p>Sorry, that recipe could not be found.</p>
+</ng-template>

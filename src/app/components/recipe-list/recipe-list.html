@@ -1,0 +1,22 @@
+<!-- src/app/recipe-list/recipe-list.html -->
+
+<div class="list-container">
+  <h2>Our Recipes</h2>
+  <input
+    type="text"
+    placeholder="Search recipes..."
+    [(ngModel)]="searchTerm"
+    (input)="onSearchTermChange()"
+    class="search-input"
+  />
+  <ul class="recipe-list">
+      <li *ngFor="let recipe of filteredRecipes" class="recipe-item">
+        <img [src]="recipe.imageUrl || 'https://source.unsplash.com/80x80/?indian-food,vegetarian'" alt="{{ recipe.title }}" class="recipe-image" />
+        <a [routerLink]="['/recipes', recipe.id]" class="recipe-title">
+          <h3>{{ recipe.title }}</h3>
+        </a>
+        <button class="edit-button" (click)="editRecipe(recipe.id)" aria-label="Edit recipe">Edit</button>
+        <button class="delete-button" (click)="deleteRecipe(recipe.id)" aria-label="Delete recipe">Delete</button>
+      </li>
+  </ul>
+</div>
